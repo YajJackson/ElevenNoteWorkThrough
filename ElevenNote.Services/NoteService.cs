@@ -59,9 +59,10 @@ namespace ElevenNote.Services
 
         public NoteDetailModel GetNoteById(int id)
         {
+            NoteEntity entity;
             using (var ctx = new ElevenNoteDbContext())
             {
-               NoteEntity entity =
+                entity =
                     ctx
                         .Notes
                         .SingleOrDefault(e => e.NoteId == id && e.UserId == _userId);
