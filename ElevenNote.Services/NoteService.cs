@@ -56,5 +56,10 @@ namespace ElevenNote.Services
                 
             }
         }
+
+        public NoteDetailModel GetNoteById()
+        {
+
+        }
     }
 }
