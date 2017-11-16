@@ -1,19 +1,19 @@
-namespace ElevenNote.Migrations
+namespace ElevenNote.Data.Migrations
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<ElevenNote.Web.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ElevenNote.Data.ElevenNoteDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "ElevenNote.Web.Models.ApplicationDbContext";
+            ContextKey = "ElevenNote.Data.ElevenNoteDbContext";
         }
 
-        protected override void Seed(ElevenNote.Web.Models.ApplicationDbContext context)
+        protected override void Seed(ElevenNote.Data.ElevenNoteDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

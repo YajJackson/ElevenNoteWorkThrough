@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel;
 
 namespace ElevenNote.Data
 {
@@ -22,6 +23,9 @@ namespace ElevenNote.Data
 
         [MaxLength(500)]
         public string Content { get; set; }
+
+        [DefaultValue(false)]
+        public bool IsStarred { get; set; }
 
         [Required]
         public DateTime CreatedUtc { get; set; }
