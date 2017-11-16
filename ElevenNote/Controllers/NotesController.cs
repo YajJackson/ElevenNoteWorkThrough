@@ -69,8 +69,15 @@ namespace ElevenNote.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(NoteEditModel model)
+        public ActionResult Edit(int id, NoteEditModel model)
         {
+            if(id != model.NoteId)
+            {
+                ModelState.AddModelError("", "Nice try.");
+                model.NoteId = id;
+                return View(model);
+            }
+
             if (!ModelState.IsValid) return View(model);
 
             if (!CreateNoteService().UpdateNote(model))
