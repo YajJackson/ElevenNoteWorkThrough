@@ -52,5 +52,35 @@ namespace ElevenNote.Controllers
    
             return View(model);
         }
+
+        public ActionResult Edit(int id)
+        {
+            var detailModel = CreateNoteService().GetNoteById(id);
+            var editModel =
+                new NoteEditModel
+                    {
+                        NoteId = detailModel.NoteId,
+                        Title = detailModel.Title,
+                        Content = detailModel.Content
+                    };
+
+            return View(editModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(NoteEditModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (!CreateNoteService().UpdateNote(model))
+            {
+                ModelState.AddModelError("", "Unable to update note");
+                return View(model);
+            }
+
+            return RedirectToAction("Index");
+
+        }
     }
 }
