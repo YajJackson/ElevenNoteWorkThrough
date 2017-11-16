@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace ElevenNote.Models
 {
-    public class NoteDetailModel
+    public class NoteEditModel
     {
+        [Required]
         public int NoteId { get; set; }
 
+        [Required]
         public string Title { get; set; }
 
+        [MaxLength(500)]
         public string Content { get; set; }
-
-        public DateTime CreatedUtc { get; set; }
-
-        public DateTime? ModifiedUtc { get; set; }
     }
 }
