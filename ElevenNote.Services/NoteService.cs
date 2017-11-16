@@ -65,19 +65,19 @@ namespace ElevenNote.Services
                     ctx
                         .Notes
                         .SingleOrDefault(e => e.NoteId == id && e.UserId == _userId);
-
-                if (entity == null) return new NoteDetailModel();
-
-                return
-                    new NoteDetailModel
-                    {
-                        NoteId = entity.NoteId,
-                        Title = entity.Title,
-                        Content = entity.Content,
-                        CreatedUtc = entity.CreatedUtc,
-                        ModifiedUtc = entity.ModifiedUtc
-                    };
             }
+
+            if (entity == null) return new NoteDetailModel();
+
+            return
+                new NoteDetailModel
+                {
+                    NoteId = entity.NoteId,
+                    Title = entity.Title,
+                    Content = entity.Content,
+                    CreatedUtc = entity.CreatedUtc,
+                    ModifiedUtc = entity.ModifiedUtc
+                };
         }
 
         public bool updateNote(NoteEditModel model)
