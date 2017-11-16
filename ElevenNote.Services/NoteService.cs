@@ -11,7 +11,15 @@ namespace ElevenNote.Services
     public class NoteService
     {
         private readonly Guid _userId;
-        
+
+        private NoteEntity GetNoteById(int noteId, ElevenNoteDbContext context)
+        {
+            return 
+                context
+                .Notes
+                .SingleOrDefault(e => e.NoteId == noteId && e.UserId == _userId);
+        }
+
         public NoteService(Guid userId)
         {
             _userId = userId;
@@ -62,10 +70,7 @@ namespace ElevenNote.Services
             NoteEntity entity;
             using (var ctx = new ElevenNoteDbContext())
             {
-                entity =
-                    ctx
-                        .Notes
-                        .SingleOrDefault(e => e.NoteId == id && e.UserId == _userId);
+                entity = GetNoteById(id, ctx);
             }
 
             if (entity == null) return new NoteDetailModel();
@@ -85,10 +90,7 @@ namespace ElevenNote.Services
         {
             using (var ctx = new ElevenNoteDbContext())
             {
-                NoteEntity entity =
-                    ctx
-                        .Notes
-                        .SingleOrDefault(e => e.NoteId == model.NoteId && e.UserId == _userId);
+                NoteEntity entity = GetNoteById(model.NoteId, ctx);
 
                 if (entity == null) return false;
 
@@ -104,10 +106,7 @@ namespace ElevenNote.Services
         {
             using(var ctx = new ElevenNoteDbContext())
             {
-                NoteEntity entity =
-                    ctx
-                        .Notes
-                        .SingleOrDefault(e => e.NoteId == noteId && e.UserId == _userId);
+                NoteEntity entity = GetNoteById(noteId, ctx);
 
                 if (entity == null) return false;
 
