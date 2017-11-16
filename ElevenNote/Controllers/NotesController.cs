@@ -22,6 +22,7 @@ namespace ElevenNote.Controllers
         public ActionResult Index()
         {
             var model = CreateNoteService().GetNotes();
+
             return View(model);
         }
 

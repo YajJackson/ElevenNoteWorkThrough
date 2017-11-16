@@ -13,6 +13,8 @@ namespace ElevenNote.Models
 
         public string Title { get; set; }
 
+        public bool IsStarred { get; set; }
+
         public DateTime CreatedUtc { get; set; }
 
         public DateTime? ModifiedUtc { get; set; }
