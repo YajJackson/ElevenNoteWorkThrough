@@ -87,7 +87,13 @@ namespace ElevenNote.Controllers
             }
 
             return RedirectToAction("Index");
+        }
 
+        public ActionResult Delete(int id)
+        {
+            var model = CreateNoteService().GetNoteById(id);
+
+            return View(model);
         }
     }
 }
