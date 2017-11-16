@@ -48,7 +48,7 @@ namespace ElevenNote.Controllers
 
         public ActionResult Details(int id)
         {
-            var model = CreateNoteService().GetNoteById();
+            var model = CreateNoteService().GetNoteById(id);
    
             return View(model);
         }
